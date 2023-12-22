@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 const app = express();
 
 app.get("/", (req, res, next) => {
-  res.send("Hey!");
+  res.send("Hey #2!");
 });
 
 mongoose

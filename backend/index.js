@@ -13,13 +13,6 @@ app.get("/", (req, res, next) => {
 });
 // Middleware for parsing request body
 app.use(cors());
-// app.use(
-//   cors({
-//     origin: "https://localhost:3000",
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type"],
-//   })
-// );
 
 app.use("/books", bookRoute);
 mongoose

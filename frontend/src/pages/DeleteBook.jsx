@@ -8,8 +8,8 @@ import { useSnackbar } from "notistack";
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
-  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   const handleDeleteBook = () => {
     setLoading(true);

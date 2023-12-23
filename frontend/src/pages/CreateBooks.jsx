@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
+import { serverURL } from "../../../backend/config";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -21,8 +22,7 @@ const CreateBooks = () => {
     };
     setLoading(true);
     axios
-      // .post("http://localhost:5555/books", data)
-      .post("https://books-store-com.onrender.com/books", data)
+      .post(`${serverURL}/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("New book was created!", { variant: "success" });

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
+import { serverURL } from "../../../backend/config";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -14,8 +15,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      // .delete(`http://localhost:5555/books/${id}`)
-      .delete(`https://books-store-com.onrender.com/books/${id}`)
+      .delete(`${serverURL}/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book deleted. Great!", { variant: "success" });

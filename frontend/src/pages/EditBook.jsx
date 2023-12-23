@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
+import { serverURL } from "../../../backend/config";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -17,8 +18,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      // .get(`http://localhost:5555/books/${id}`)
-      .get(`https://books-store-com.onrender.com/books/${id}`)
+      .get(`${serverURL}/books/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
@@ -39,8 +39,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      // .put(`http://localhost:5555/books/${id}`, data)
-      .put(`https://books-store-com.onrender.com/books/${id}`, data)
+      .put(`${serverURL}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book edited. Great!", { variant: "success" });

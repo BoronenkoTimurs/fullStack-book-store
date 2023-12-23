@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { serverURL } from "../../../backend/config";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
@@ -12,8 +13,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      // .get(`http://localhost:5555/books/${id}`)
-      .get(`https://books-store-com.onrender.com/books/${id}`)
+      .get(`${serverURL}/books/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import { serverURL } from "../../../backend/config";
+import { MdOutlineAddBox } from "react-icons/md";
 import BooksTable from "../components/home/BooksTable";
 import BooksCard from "../components/home/BooksCard";
 
@@ -14,8 +15,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      // .get("http://localhost:5555/books")
-      .get("https://books-store-com.onrender.com/books")
+      .get(`${serverURL}/books`)
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
